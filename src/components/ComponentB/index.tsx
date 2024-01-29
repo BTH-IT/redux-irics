@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 const ComponentB = () => {
   const linkList = useAppSelector((state) => state.link);
-  const { setIsEditing, setLink } = useEditContext();
+  const { setLink } = useEditContext();
   const dispatch = useAppDispatch();
 
   return (
@@ -20,7 +20,6 @@ const ComponentB = () => {
           key={link.id}
           handleEdit={() => {
             setLink(link);
-            setIsEditing(true);
           }}
           handleRemove={() => {
             dispatch(deleteLink(link.id));

@@ -5,8 +5,6 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Định nghĩa kiểu dữ liệu cho context
 interface EditContextType {
-  isEditing: boolean;
-  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
   link: ILink | null;
   setLink: React.Dispatch<React.SetStateAction<ILink | null>>;
 }
@@ -16,11 +14,10 @@ const EditContext = createContext<EditContextType | undefined>(undefined);
 
 // Tạo Provider
 export const EditProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isEditing, setIsEditing] = useState(false);
   const [link, setLink] = useState<ILink | null>(null);
 
   return (
-    <EditContext.Provider value={{ isEditing, setIsEditing, setLink, link }}>
+    <EditContext.Provider value={{ setLink, link }}>
       {children}
     </EditContext.Provider>
   );

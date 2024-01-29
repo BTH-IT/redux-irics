@@ -31,8 +31,8 @@ const validationSchema = Yup.object({
 const ComponentA = () => {
   const dispatch = useAppDispatch();
 
-  const {isEditing, setIsEditing, setLink, link} =useEditContext();
-
+  const {setLink, link} =useEditContext();
+  
   const formik = useFormik<FormValuesType>({
     initialValues: {
       url: "",
@@ -56,7 +56,7 @@ const ComponentA = () => {
         return;
       }
 
-      if (isEditing && link) {
+      if (link) {
         dispatch(updateLink({
           ...link,
           ...values,
@@ -81,7 +81,6 @@ const ComponentA = () => {
         type: LINK_TYPE.YOUTUBE,
       } as Partial<FormikState<FormValuesType>>);
 
-      setIsEditing(false);
       setLink(null);
     },
   });
@@ -197,6 +196,7 @@ const ComponentA = () => {
         </span>
       </div>
       <button
+        disabled={formik.isSubmitting}
         type="submit"
         className="w-full p-4 bg-blue-500 border border-transparent text-white font-semibold text-xl rounded-md"
       >
