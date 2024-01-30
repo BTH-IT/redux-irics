@@ -5,6 +5,7 @@ import React from "react";
 
 const Iframe: React.FC<ILink> = ({ type, url, createdAt, updatedAt }) => {
   const renderContent = () => {
+    // lấy id của các link tiktok và youtube để có thể embed iframe
     const urlSplit = url.split("/");
     const idTiktok = urlSplit[urlSplit.length - 1];
     const idYoutube = urlSplit[urlSplit.length - 1].split("=")[
@@ -13,7 +14,7 @@ const Iframe: React.FC<ILink> = ({ type, url, createdAt, updatedAt }) => {
     switch (type) {
       case LINK_TYPE.TIKTOK:
         return (
-          <div>
+          <div className="w-full">
             <div className="flex gap-2 justify-between mb-3 font-semibold px-2 items-center">
               <h2>Tiktok</h2>
               <div className="flex gap-3 flex-col">
@@ -52,7 +53,7 @@ const Iframe: React.FC<ILink> = ({ type, url, createdAt, updatedAt }) => {
         );
       case LINK_TYPE.YOUTUBE:
         return (
-          <div>
+          <div className="w-full">
             <div className="flex gap-2 justify-between mb-3 font-semibold px-2 items-center">
               <h2>YouTube Video</h2>
               <div className="flex gap-3 flex-col">

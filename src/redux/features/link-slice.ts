@@ -14,7 +14,7 @@ export const linkSlice = createSlice({
         action.payload,
       ];
 
-      // Sort the new links by createdAt
+      // sắp xếp theo ngày lập
       return newLinks.sort((a, b) => moment(a.createdAt).valueOf() < moment(b.createdAt).valueOf() ? 1 : -1);
     },
     updateLink: (state, action: PayloadAction<ILink>) => {

@@ -56,6 +56,7 @@ const ComponentA = () => {
         return;
       }
 
+      // nếu có chọn link thì form sẽ là dùng để sửa link ngược lại thì thêm 1 link mới
       if (link) {
         dispatch(updateLink({
           ...link,
@@ -75,6 +76,7 @@ const ComponentA = () => {
         toast.success("Adding Sucessfully!")
       }
 
+      // reset form
       formik.resetForm({
         url: "",
         mode: MODE.PUBLIC,
@@ -85,6 +87,7 @@ const ComponentA = () => {
     },
   });
 
+  // cập nhật link khi muốn update
   useEffect(() => {
     if (link) {
       formik.setValues({
